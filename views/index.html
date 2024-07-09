@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,20 +14,23 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
     <div class="container">
-        <div class="chat-window">
-            <div class="messages" id="messages" >
+        <div class="chat-window" hx-ext="ws" ws-connect="/ws">
+            <div class="messages" id="messages" hx-swap="beforeend" hx-swap-oob="beforeend">
                 <!-- Messages will be appended here -->
             </div>
-            <form id="form">
+            <form id="form" ws-send hx ">
                 <div class="input-area">
                     <input type="text" name="text" min="1" id="messageInput" placeholder="Type a message...">
                     <button type="submit">Send</button>
                 </div>
             </form>
+
         </div>
     </div>
+
 </body>
 
 </html>
